@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Introduction to Python Programming",
+        "name": "John Doe",
+        "email": "john.doe@email.com",
+        "price": 49.99,
+        "description": "Learn the fundamentals of Python programming and enhance your coding skills.",
+        "image": "https://postimg.cc/zHW53Q9s][img]https://i.postimg.cc/zHW53Q9s/New-Project-2023-11-24-T020042-028.png"
+    },
+    {
+        "title": "Web Development Bootcamp",
+        "name": "Jane Smith",
+        "email": "jane.smith@email.com",
+        "price": 79.99,
+        "description": "Build responsive and dynamic websites from scratch with this comprehensive web development course.",
+        "image": "https://postimg.cc/Kk1mhjQv][img]https://i.postimg.cc/Kk1mhjQv/New-Project-2023-11-24-T020143-085.png"
+    },
+    {
+        "title": "Digital Marketing Mastery",
+        "name": "Alex Johnson",
+        "email": "alex.johnson@email.com",
+        "price": 59.99,
+        "description": "Master the art of digital marketing and boost your online presence and business.",
+        "image": "https://postimg.cc/FdwNrvnb][img]https://i.postimg.cc/FdwNrvnb/New-Project-2023-11-24-T020221-316.png"
+    },
+    {
+        "title": "Graphic Design Fundamentals",
+        "name": "Emily Davis",
+        "email": "emily.davis@email.com",
+        "price": 69.99,
+        "description": "Unlock your creativity and design stunning graphics with this hands-on graphic design course.",
+        "image": "https://postimg.cc/QVWj6BHf][img]https://i.postimg.cc/QVWj6BHf/New-Project-2023-11-24-T020316-461.png"
+    },
+    {
+        "title": "Data Science Essentials",
+        "name": "Michael Brown",
+        "email": "michael.brown@email.com",
+        "price": 89.99,
+        "description": "Dive into the world of data science and learn essential skills for analyzing and interpreting data.",
+        "image": "data_science_image.jpg"
+    },
+    {
+        "title": "Mobile App Development Workshop",
+        "name": "Sophie Wilson",
+        "email": "sophie.wilson@email.com",
+        "price": 99.99,
+        "description": "Create your own mobile apps from scratch with this hands-on app development workshop.",
+        "image": "https://postimg.cc/svdsbVWs][img]https://i.postimg.cc/svdsbVWs/New-Project-2023-11-24-T020342-980.png"
+    },
+    {
+        "title": "Social Media Strategy",
+        "name": "Daniel Garcia",
+        "email": "daniel.garcia@email.com",
+        "price": 49.99,
+        "description": "Develop a winning social media strategy to effectively promote your brand and engage with your audience.",
+        "image": "social_media_strategy_image.jpg"
+    },
+    {
+        "title": "Creative Writing Masterclass",
+        "name": "Olivia Lee",
+        "email": "olivia.lee@email.com",
+        "price": 59.99,
+        "description": "Unleash your creativity and improve your writing skills with this comprehensive creative writing masterclass.",
+        "image": "creative_writing_image.jpg"
+    },
+    {
+        "title": "Photography Basics",
+        "name": "William Turner",
+        "email": "william.turner@email.com",
+        "price": 39.99,
+        "description": "Learn the basics of photography and capture stunning images with your camera or smartphone.",
+        "image": "photography_image.jpg"
+    },
+    {
+        "title": "Financial Literacy 101",
+        "name": "Emma Robinson",
+        "email": "emma.robinson@email.com",
+        "price": 49.99,
+        "description": "Gain essential financial knowledge and skills to make informed decisions and secure your financial future.",
+        "image": "financial_literacy_image.jpg"
+    },
+    {
+        "title": "UX/UI Design Workshop",
+        "name": "Ryan Mitchell",
+        "email": "ryan.mitchell@email.com",
+        "price": 79.99,
+        "description": "Create user-friendly and visually appealing interfaces with this hands-on UX/UI design workshop.",
+        "image": "https://postimg.cc/7CsqR03W][img]https://i.postimg.cc/7CsqR03W/New-Project-2023-11-24-T015855-363.png"
+    },
+    {
+        "title": "Leadership and Management Essentials",
+        "name": "Sophia Turner",
+        "email": "sophia.turner@email.com",
+        "price": 69.99,
+        "description": "Develop essential leadership and management skills to excel in your professional career.",
+        "image": "leadership_management_image.jpg"
+    },
+    {
+        "title": "Java Programming Fundamentals",
+        "name": "David Miller",
+        "email": "david.miller@email.com",
+        "price": 89.99,
+        "description": "Learn the fundamentals of Java programming and build a strong foundation for software development.",
+        "image": "java_programming_image.jpg"
+    },
+    {
+        "title": "E-commerce Strategy",
+        "name": "Isabella White",
+        "email": "isabella.white@email.com",
+        "price": 59.99,
+        "description": "Develop a successful e-commerce strategy to boost sales and grow your online business.",
+        "image": "ecommerce_strategy_image.jpg"
+    },
+    {
+        "title": "Cybersecurity Essentials",
+        "name": "Ethan Anderson",
+        "email": "ethan.anderson@email.com",
+        "price": 79.99,
+        "description": "Protect your digital assets and learn essential cybersecurity skills to safeguard against online threats.",
+        "image": "cybersecurity_image.jpg"
+    }
+]

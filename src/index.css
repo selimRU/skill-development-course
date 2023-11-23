@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rancho&family=Roboto&display=swap');
+
+.roboto {
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.rancho {
+  font-family: 'Rancho', cursive;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
