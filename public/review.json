@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Introduction to Python Programming",
+        "name": "Salam",
+        "image": "https://i.postimg.cc/6pt9YjLZ/New-Project-2023-11-24-T120847-090.png",
+        "details": "Excellent for beginners. Highly recommended.",
+        "rating": 3
+    },
+    {
+        "title": "Web Development Bootcamp",
+        "name": "Sumon",
+        "image": "https://i.postimg.cc/MK8xpPLL/New-Project-2023-11-24-T122453-990.png",
+        "details": "Amazing course! Practical projects were very helpful.",
+        "rating": 2
+    },
+    {
+        "title": "Digital Marketing Mastery",
+        "name": "Ehan",
+        "image": "https://i.postimg.cc/wxNgH8wJ/New-Project-2023-11-24-T122108-461.png",
+        "details": "Highly recommend for anyone wanting to dive into digital marketing.",
+        "rating": 5
+    },
+    {
+        "title": "Graphic Design Fundamentals",
+        "name": "Munny",
+        "image": "https://i.postimg.cc/mDv4M8gt/New-Project-2023-11-24-T122247-037.png",
+        "details": "Very engaging! Loved the practical design projects.",
+        "rating": 4
+    },
+    {
+        "title": "Data Science Essentials",
+        "name": "Soha",
+        "image": "https://i.postimg.cc/XJG3pT3R/New-Project-2023-11-24-T121434-527.png",
+        "details": "Comprehensive and well-structured. Practical exercises were valuable.",
+        "rating": 4
+    },
+    {
+        "title": "Mobile App Development Workshop",
+        "name": "Saihan",
+        "image": "https://i.postimg.cc/HLLTCrNs/New-Project-2023-11-24-T120926-002.png",
+        "details": "Awesome workshop! Cleared up many doubts I had about app development.",
+        "rating": 4
+    },
+    {
+        "title": "Social Media Strategy",
+        "name": "Mim",
+        "image": "https://i.postimg.cc/xdrMqSKm/New-Project-2023-11-24-T123131-713.png",
+        "details": "Insightful strategies! Helped boost engagement on my social media platforms.",
+        "rating": 5
+    },
+    {
+        "title": "Creative Writing Masterclass",
+        "name": "Shathy",
+        "image": "https://i.postimg.cc/jjktqsV6/New-Project-2023-11-24-T121040-898.png",
+        "details": "Fantastic masterclass! Improved my storytelling skills significantly.",
+        "rating": 5
+    },
+    {
+        "title": "Photography Basics",
+        "name": "Sinthy",
+        "image": "https://i.postimg.cc/sx5rJ7MK/New-Project-2023-11-24-T121700-479.png",
+        "details": "Practical tips for capturing better shots. Loved the hands-on exercises.",
+        "rating": 5
+    }
+]
