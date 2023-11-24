@@ -37,7 +37,7 @@
         "email": "michael.brown@email.com",
         "price": 89.99,
         "description": "Dive into the world of data science and learn essential skills for analyzing and interpreting data.",
-        "image": "data_science_image.jpg"
+        "image": "https://i.postimg.cc/52VkCx6V/New-Project-2023-11-24-T201616-514.png"
     },
     {
         "title": "Mobile App Development Workshop",
@@ -45,7 +45,7 @@
         "email": "sophie.wilson@email.com",
         "price": 99.99,
         "description": "Create your own mobile apps from scratch with this hands-on app development workshop.",
-        "image": "https://postimg.cc/svdsbVWs][img]https://i.postimg.cc/svdsbVWs/New-Project-2023-11-24-T020342-980.png"
+        "image": "https://i.postimg.cc/LXrwyrVk/New-Project-2023-11-24-T020342-980.png"
     },
     {
         "title": "Social Media Strategy",
@@ -53,7 +53,7 @@
         "email": "daniel.garcia@email.com",
         "price": 49.99,
         "description": "Develop a winning social media strategy to effectively promote your brand and engage with your audience.",
-        "image": "social_media_strategy_image.jpg"
+        "image": "https://i.postimg.cc/Vkvm2BWv/New-Project-2023-11-24-T201422-210.png"
     },
     {
         "title": "Creative Writing Masterclass",
@@ -61,7 +61,7 @@
         "email": "olivia.lee@email.com",
         "price": 59.99,
         "description": "Unleash your creativity and improve your writing skills with this comprehensive creative writing masterclass.",
-        "image": "creative_writing_image.jpg"
+        "image": "https://i.postimg.cc/gJnhJZp2/New-Project-2023-11-24-T201236-890.png"
     },
     {
         "title": "Photography Basics",
@@ -69,7 +69,7 @@
         "email": "william.turner@email.com",
         "price": 39.99,
         "description": "Learn the basics of photography and capture stunning images with your camera or smartphone.",
-        "image": "photography_image.jpg"
+        "image": "https://i.postimg.cc/QCCTFWrM/New-Project-2023-11-24-T201055-058.png"
     },
     {
         "title": "Financial Literacy 101",
@@ -77,7 +77,7 @@
         "email": "emma.robinson@email.com",
         "price": 49.99,
         "description": "Gain essential financial knowledge and skills to make informed decisions and secure your financial future.",
-        "image": "financial_literacy_image.jpg"
+        "image": "https://i.postimg.cc/fLWWbjjG/New-Project-2023-11-24-T200832-835.png"
     },
     {
         "title": "UX/UI Design Workshop",
@@ -85,7 +85,7 @@
         "email": "ryan.mitchell@email.com",
         "price": 79.99,
         "description": "Create user-friendly and visually appealing interfaces with this hands-on UX/UI design workshop.",
-        "image": "https://postimg.cc/7CsqR03W][img]https://i.postimg.cc/7CsqR03W/New-Project-2023-11-24-T015855-363.png"
+        "image": "https://i.postimg.cc/XqPXCnSb/New-Project-2023-11-24-T015855-363.png"
     },
     {
         "title": "Leadership and Management Essentials",
@@ -93,7 +93,7 @@
         "email": "sophia.turner@email.com",
         "price": 69.99,
         "description": "Develop essential leadership and management skills to excel in your professional career.",
-        "image": "leadership_management_image.jpg"
+        "image": "https://i.postimg.cc/GpVzLqC2/New-Project-2023-11-24-T200628-668.png"
     },
     {
         "title": "Java Programming Fundamentals",
@@ -101,7 +101,7 @@
         "email": "david.miller@email.com",
         "price": 89.99,
         "description": "Learn the fundamentals of Java programming and build a strong foundation for software development.",
-        "image": "java_programming_image.jpg"
+        "image": "https://i.postimg.cc/tRwGcBbJ/java.png"
     },
     {
         "title": "E-commerce Strategy",
@@ -109,7 +109,7 @@
         "email": "isabella.white@email.com",
         "price": 59.99,
         "description": "Develop a successful e-commerce strategy to boost sales and grow your online business.",
-        "image": "ecommerce_strategy_image.jpg"
+        "image": "https://i.postimg.cc/VNXhSxLT/New-Project-2023-11-24-T195427-360.png"
     },
     {
         "title": "Cybersecurity Essentials",
@@ -117,6 +117,6 @@
         "email": "ethan.anderson@email.com",
         "price": 79.99,
         "description": "Protect your digital assets and learn essential cybersecurity skills to safeguard against online threats.",
-        "image": "cybersecurity_image.jpg"
+        "image": "https://i.postimg.cc/52VkCx6V/New-Project-2023-11-24-T201616-514.png"
     }
 ]

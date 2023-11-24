@@ -3,8 +3,10 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import UseAdmin from '../../Hooks/UseAdmin';
 
 const Nav = () => {
+    const [isAdmin, isAdminpending] = UseAdmin()
     const { user, logOut } = useAuth()
     const navigate = useNavigate()
     const handleLogOut = () => {
@@ -30,7 +32,9 @@ const Nav = () => {
                         <span className="block text-sm">{user?.displayName}</span>
                         <span className="block truncate text-sm font-medium">{user?.email}</span>
                     </Dropdown.Header>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
+                    <Dropdown.Item>
+                        <Link to='/dashboard/teacherRequest'>Dashboard</Link>
+                    </Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
                 </Dropdown>
@@ -40,7 +44,10 @@ const Nav = () => {
                 <NavLink to="/" active>
                     Home
                 </NavLink>
-                <NavLink href="#">Teach on Skill Minds</NavLink>
+                <NavLink to="/allCourses" active>
+                    All Courses
+                </NavLink>
+                <NavLink to='/dashboard/teachOnSkillMinds'>Teach on Skill Minds</NavLink>
                 <NavLink href="#">Services</NavLink>
                 <NavLink href="#">Pricing</NavLink>
                 <NavLink href="#">Contact</NavLink>
