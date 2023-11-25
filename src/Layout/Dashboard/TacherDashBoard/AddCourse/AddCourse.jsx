@@ -2,15 +2,19 @@ import React from 'react';
 'use client';
 import { useForm } from "react-hook-form"
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
+import useAuth from '../../../../Hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const AddCourse = () => {
-
+    const navigate = useNavigate()
+    const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     const {
@@ -29,14 +33,15 @@ const AddCourse = () => {
         })
         console.log(res.data);
         if (res.data.success) {
-            const itemInfo = {
+            const courseInfo = {
+                title: data.title,
                 name: data.name,
-                recipe: data.recipe,
+                email: data.email,
                 image: res.data.data.display_url,
-                category: data.category,
-                price: data.price
+                price: data.price,
+                description: data.description
             }
-            axiosSecure.post('/api/v1/item', itemInfo)
+            axiosSecure.post('/api/v1/addCourse', courseInfo)
                 .then(res => {
                     console.log(res.data.insertedId);
                     if (res.data.insertedId) {
@@ -50,6 +55,7 @@ const AddCourse = () => {
                     }
                 })
         }
+        navigate('/dashboard/myClasses')
         reset()
     }
     return (
@@ -57,38 +63,33 @@ const AddCourse = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-4 justify-center mx-auto w-full">
                 <div>
                     <div className="mb-2 block">
-                        <Label htmlFor="small" value="Recipe name*" />
+                        <Label htmlFor="small" value="Title" />
                     </div>
-                    <TextInput {...register("name", { required: true })} id="small" type="text" sizing="sm" />
+                    <TextInput {...register("title", { required: true })} id="small" type="text" sizing="sm" />
                 </div>
-                <div className=' flex flex-col md:flex-row lg:flex-row w-full md:items-center md:justify-between gap-5'>
-                    <div className=' md:w-[50%]'>
-                        <div className="mb-2 block">
-                            <Label htmlFor="base" value="Category*" />
-                        </div>
-                        <Select {...register("category", { required: true })} id="base" type="text" sizing="md" >
-                            <option disabled value='' selected >
-                                Select Category
-                            </option>
-                            <option value="dessert">Dessert</option>
-                            <option value="pizza">Pizza</option>
-                            <option value="soup">Soup</option>
-                            <option value="salads">Salads</option>
-                            <option value="drinks">Drinks</option>
-                        </Select>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="small" value="Name" />
                     </div>
-                    <div className=' md:w-[50%]'>
-                        <div className="mb-2 block">
-                            <Label htmlFor="base" value="Price*" />
-                        </div>
-                        <TextInput {...register("price", { required: true })} id="base" type="number" sizing="md" />
+                    <TextInput defaultValue={user.displayName} {...register("name", { required: true })} id="small" type="text" sizing="sm" readOnly />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="small" value="Email" />
                     </div>
+                    <TextInput defaultValue={user.email} {...register("email", { required: true })} id="small" type="email" sizing="sm" readOnly />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="base" value="Price*" />
+                    </div>
+                    <TextInput {...register("price", { required: true })} id="base" type="number" sizing="md" />
                 </div>
                 <div >
                     <div className="mb-2 block">
-                        <Label htmlFor="large" value="Recipe Details*" />
+                        <Label htmlFor="large" value="Description*" />
                     </div>
-                    <Textarea {...register("recipe", { required: true })} className='h-[200px]' id="large" type="text" sizing="lg" />
+                    <Textarea {...register("description", { required: true })} className='h-[200px]' id="large" type="text" sizing="lg" />
                 </div>
                 <div className=' flex flex-col md:flex-row lg:flex-row w-full md:items-center md:justify-between gap-5'>
                     <input
@@ -98,7 +99,7 @@ const AddCourse = () => {
                         id="image"
                     />
                 </div>
-                <Button type='submit'>Add Item</Button>
+                <Button type='submit'>Add Course</Button>
             </form>
         </div>
     );

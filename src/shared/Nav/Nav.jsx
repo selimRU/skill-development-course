@@ -4,15 +4,24 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import UseAdmin from '../../Hooks/UseAdmin';
+import useTeacher from '../../Hooks/useTeacher';
 
 const Nav = () => {
     const [isAdmin, isAdminpending] = UseAdmin()
+    console.log(isAdmin);
+    const [isTeacher, isATeacherPending] = useTeacher()
     const { user, logOut } = useAuth()
     const navigate = useNavigate()
     const handleLogOut = () => {
         logOut()
         navigate('/signin')
     }
+
+    if (isATeacherPending)
+        return <progress></progress>
+        
+    if (isAdmin)
+        return <progress></progress>
     return (
         <Navbar fluid rounded className=' bg-blue-300'>
             <Navbar.Brand href="/">
@@ -33,7 +42,18 @@ const Nav = () => {
                         <span className="block truncate text-sm font-medium">{user?.email}</span>
                     </Dropdown.Header>
                     <Dropdown.Item>
-                        <Link to='/dashboard/teacherRequest'>Dashboard</Link>
+                        {
+                            isAdmin && !isTeacher &&
+                            <Link to='/dashboard/teacherRequest'>Dashboard</Link>
+                        }
+                        {
+                            isTeacher && !isAdmin &&
+                            <Link to='/dashboard/addCourse'>Dashboard</Link>
+                        }
+                        {
+                            <Link to='/dashboard/myEnroledCourses'>Dashboard</Link>
+                        }
+
                     </Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
@@ -47,7 +67,7 @@ const Nav = () => {
                 <NavLink to="/allCourses" active>
                     All Courses
                 </NavLink>
-                <NavLink to='/dashboard/teachOnSkillMinds'>Teach on Skill Minds</NavLink>
+                <NavLink to='/teachOnSkillMinds'>Teach on Skill Minds</NavLink>
                 <NavLink href="#">Services</NavLink>
                 <NavLink href="#">Pricing</NavLink>
                 <NavLink href="#">Contact</NavLink>

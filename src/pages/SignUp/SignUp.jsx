@@ -21,7 +21,8 @@ const SignUp = () => {
                 // console.log(res.user);
                 const userInfo = {
                     name: res.user.displayName,
-                    email: res.user.email
+                    email: res.user.email,
+                    image: res.user.photoURL
                 }
                 axiosPublic.post('/api/v1/createUsers', userInfo)
                     .then(res => {
@@ -58,11 +59,13 @@ const SignUp = () => {
             // console.log(data);
             createUser(data.email, data.password)
                 .then(res => {
-                    // console.log(res.user);
+                    console.log(res.user);
                     profileUpdate(data.name, image)
                     const userInfo = {
                         name: data.name,
-                        email: data.email
+                        email: data.email,
+                        phone: data.phone,
+                        image: image
                     }
                     axiosPublic.post('/api/v1/createUsers', userInfo)
                         .then(res => {
@@ -103,6 +106,14 @@ const SignUp = () => {
                                 <Label htmlFor="name" value="Your name" />
                             </div>
                             <TextInput {...register("name", { required: true })} id="name" type="text" placeholder="Your name" shadow />
+                            {errors.name && <span className=" text-red-500" >Name is required</span>
+                            }
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="phone" value="Your phone" />
+                            </div>
+                            <TextInput {...register("phone", { required: true })} id="phone" type="text" placeholder="Your phone" shadow />
                             {errors.name && <span className=" text-red-500" >Name is required</span>
                             }
                         </div>
