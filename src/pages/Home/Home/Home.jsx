@@ -3,6 +3,8 @@ import Banner from "./Banner";
 import Partners from "../Partners/Partners";
 import PopularCourses from "../PopularCourses/PopularCourses";
 import Reviews from "../Reviews/Reviews";
+import Statistics from "../Statistics/Statistics";
+import TeachingToday from "../TeachingToday/TeachingToday";
 
 
 const Home = () => {
@@ -15,6 +17,8 @@ const Home = () => {
             <Partners />
             <PopularCourses />
             <Reviews />
+            <Statistics />
+            <TeachingToday />
         </div>
     );
 };

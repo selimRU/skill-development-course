@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useTeacherRequest from "../../../../Hooks/useTeacherRequest";
 import { useNavigate } from "react-router-dom";
 import useUsers from "../../../../Hooks/useUsers";
+import useAuth from "../../../../Hooks/useAuth";
 'use client';
 
 
@@ -14,8 +15,11 @@ const TeacherRequest = () => {
     const [requests, refetch] = useTeacherRequest()
     const axiosSecure = useAxiosSecure()
     const [users] = useUsers()
-    const handleAccepted = async (id) => {
-        const res = await axiosSecure.patch(`/api/v1/requestAccepted/${id}`)
+    // const { user } = useAuth()
+
+
+    const handleAccepted = async (name) => {
+        const res = await axiosSecure.patch(`/api/v1/requestAccepted/${name}`)
         console.log(res.data)
         if (res.data.modifiedCount > 0) {
             Swal.fire({
@@ -82,7 +86,7 @@ const TeacherRequest = () => {
                                         </button>
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <button disabled={disable} onClick={() => handleAccepted(request._id)} className="font-medium text-cyan-600  dark:text-cyan-500">
+                                        <button disabled={disable} onClick={() => handleAccepted(request.name)} className="font-medium text-cyan-600  dark:text-cyan-500">
                                             Approved
                                         </button>
                                     </Table.Cell>

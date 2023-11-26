@@ -21,7 +21,7 @@ const AllCourseCard = ({ course }) => {
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {description}
                 </p>
-                <Button gradientDuoTone="greenToBlue"><Link to={`/courseDetails/${_id}`}>Enroll</Link></Button>
+                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${_id}`}>Enroll</Link></Button>
             </Card>
         </div>
     );

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const MyCoursesCard = ({ myCourse, refetch }) => {
     const axiosSecure = useAxiosSecure()
-    const { _id, title, image, name, email, price, description } = myCourse
+    const { _id, title, image, name, email, price, description, status } = myCourse
 
     const handleDeleteCourse = () => {
         axiosSecure.delete(`/api/v1/deleteCourse/${_id}`)
@@ -36,6 +36,7 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
                 })
             })
     }
+
     return (
         <div>
             <Card className="max-w-sm" imgSrc={image} horizontal>
@@ -57,18 +58,22 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
                             Descriptions: {description}
                         </p>
                         <p className="font-normal text-gray-700 dark:text-gray-400">
-                            Status: pending
+                            Status: {status ? status : 'pending'}
                         </p>
                     </div>
                     <div className=" flex flex-row justify-between lg:flex-col gap-5 items-center lg:space-y-5">
                         <div>
-                            <Button gradientDuoTone="greenToBlue"><Link to={`/courseDetails/${_id}`}>Update</Link></Button>
+                            <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/updateCourse/${_id}`}>Update</Link></Button>
                         </div>
                         <div>
                             <Button onClick={handleDeleteCourse} gradientDuoTone="greenToBlue">Delete</Button>
                         </div>
                         <div>
-                            <Button gradientDuoTone="greenToBlue"><Link to={`/courseDetails/${_id}`}>See Details</Link></Button>
+                            {status ?
+                                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${_id}`}>See Details</Link></Button>
+                                :
+                                <Button disabled gradientDuoTone="greenToBlue">See Details</Button>
+                            }
                         </div>
                     </div>
                 </div>
@@ -78,3 +83,79 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
 };
 
 export default MyCoursesCard;
+
+
+// import { FaBus, FaIceCream, FaUsers, FaWallet } from "react-icons/fa";
+// import useAuth from "../../Hooks/useAuth";
+// import useAxiosSecure from "../../Hooks/useAxiosSecure";
+// import { useState } from "react";
+// import { useEffect } from "react";
+
+
+// const AdminHome = () => {
+//     const [count, setCount] = useState({})
+//     const axiosSecure = useAxiosSecure()
+//     const { user } = useAuth()
+
+
+//     useEffect(() => {
+//         axiosSecure.get('/api/v1/counts')
+//             .then(res => {
+//                 console.log(res.data);
+//                 setCount(res.data)
+//             })
+//     }, [])
+//     return (
+//         <div className=" w-full">
+//             <h4 className=" text-3xl uppercase">HI, WELCOME {user?.displayName}</h4>
+//             <div className=" grid items-center justify-center md:grid-cols-2 lg:grid-cols-4 gap-3 text-white my-5">
+//                 <div className="bg-gradient-to-r from-fuchsia-500 to-fuchsia-200 rounded-md">
+//                     <div className="flex gap-5 items-center px-12 py-4">
+//                         <div>
+//                             <FaWallet className=" text-4xl" />
+//                         </div>
+//                         <div>
+//                             <p className=" text-3xl">{count.revenue}</p>
+//                             <p className=" text-lg">Revenue</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div className=" bg-gradient-to-r from-orange-500 to-orange-200 rounded-md">
+//                     <div className="flex gap-5 items-center px-12 py-4">
+//                         <div>
+//                             <FaUsers className=" text-4xl" />
+//                         </div>
+//                         <div >
+//                             <p className=" text-3xl">{count.usersCount}</p>
+//                             <p className=" text-lg">Customers</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div className="bg-gradient-to-r from-pink-500 to-pink-200 rounded-md">
+//                     <div className="flex gap-5 items-center px-12 py-4">
+//                         <div>
+//                             <FaIceCream className=" text-4xl" am />
+//                         </div>
+//                         <div>
+//                             <p className=" text-3xl">{count.foodsCount}</p>
+//                             <p className=" text-lg">Products</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div className="bg-gradient-to-r from-sky-500 to-sky-200 rounded-md">
+//                     <div className="flex gap-5 items-center px-12 py-4">
+//                         <div>
+//                             <FaBus className=" text-4xl" />
+//                         </div>
+//                         <div >
+//                             <p className=" text-3xl">{count.paymentsCount}</p>
+//                             <p className=" text-lg">Orders</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default AdminHome;

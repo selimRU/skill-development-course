@@ -27,7 +27,7 @@ const CourseDetails = () => {
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {description}
                 </p>
-                <Button gradientDuoTone="greenToBlue"><Link to={`/courseDetails/${_id}`}>Pay</Link></Button>
+                <Button gradientDuoTone="greenToBlue"><Link to='dashboard/payment'>Pay</Link></Button>
             </Card>
         </div>
     );

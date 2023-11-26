@@ -11,13 +11,13 @@ import useTeacher from "../../Hooks/useTeacher";
 const Dashboard = () => {
     const [isAdmin, isAdminPending] = UseAdmin()
     const [isTeacher, isATeacherPending] = useTeacher()
-    console.log(isAdmin);
+    // console.log(isAdmin);
     console.log(isAdminPending);
     if (isAdminPending) {
         return <p>loading...</p>
     }
     return (
-        <div className=" roboto max-w-6xl mx-auto flex flex-col md:flex-row gap-5">
+        <div className=" roboto max-w-6xl mx-auto flex flex-col md:flex-row gap-5 my-5">
             <div className=" max-h-sm w-full md:w-2/5 lg:w-2/5 bg-blue-300 space-y-4 p-5">
                 {/* isAdmin && !isTeacher && */}
                     <div>

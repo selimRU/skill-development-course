@@ -8,7 +8,7 @@ import useTeacher from '../../Hooks/useTeacher';
 
 const Nav = () => {
     const [isAdmin, isAdminpending] = UseAdmin()
-    console.log(isAdmin);
+    // console.log(isAdmin);
     const [isTeacher, isATeacherPending] = useTeacher()
     const { user, logOut } = useAuth()
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ const Nav = () => {
 
     if (isATeacherPending)
         return <progress></progress>
-        
+
     if (isAdmin)
         return <progress></progress>
     return (
@@ -68,9 +68,6 @@ const Nav = () => {
                     All Courses
                 </NavLink>
                 <NavLink to='/teachOnSkillMinds'>Teach on Skill Minds</NavLink>
-                <NavLink href="#">Services</NavLink>
-                <NavLink href="#">Pricing</NavLink>
-                <NavLink href="#">Contact</NavLink>
             </Navbar.Collapse>
         </Navbar>
     );
