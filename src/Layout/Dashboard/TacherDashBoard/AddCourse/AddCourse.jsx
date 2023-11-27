@@ -56,7 +56,7 @@ const AddCourse = () => {
                 })
         }
         navigate('/dashboard/myClasses')
-        reset()
+        // reset()
     }
     return (
         <div>

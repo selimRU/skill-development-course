@@ -1,17 +1,25 @@
-import { FaBus, FaIceCream, FaUsers, FaWallet } from "react-icons/fa";
+import { FaIceCream, FaUsers, FaWallet } from "react-icons/fa";
 import img from '../../../assets/img.png'
 import { useState } from "react";
 import { useEffect } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
-import { Card } from "flowbite-react";
+import useEnrolment from "../../../Hooks/useEnrolment";
 
 const Statistics = () => {
-
+    const { enroled, isEnrolPending } = useEnrolment()
     const [count, setCount] = useState({})
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
 
+    // const { data: enroled, isPending: isATeacherPending } = useQuery({
+    //     queryKey: ['enrol'],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get(`/api/v1/enrolmentCount`)
+    //         console.log(res.data);
+    //         return res.data
+    //     }
+    // })
 
     useEffect(() => {
         axiosSecure.get('/api/v1/getUsers/count')
@@ -31,8 +39,8 @@ const Statistics = () => {
                                 <FaWallet className=" text-4xl" />
                             </div>
                             <div>
-                                <p className=" text-3xl">{count.revenue}</p>
-                                <p className=" text-lg">Revenue</p>
+                                <p className=" text-3xl">{enroled?.enroledCount}</p>
+                                <p className=" text-lg">Total Enrolment</p>
                             </div>
                         </div>
                     </div>

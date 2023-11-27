@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 'use client';
 import imgLogIn from '../../assets/signin.png'
 import { Button, Label, TextInput } from 'flowbite-react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 // import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -12,7 +12,7 @@ import useAuth from '../../Hooks/useAuth';
 
 
 const SignIn = () => {
-
+    const locattion = useLocation()
     const navigate = useNavigate()
     const { logIn, loginWithGoogle } = useAuth()
     const [disable, setDisable] = useState(true)
@@ -34,7 +34,7 @@ const SignIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
             })
     }
 

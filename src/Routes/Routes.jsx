@@ -19,6 +19,9 @@ import MyEnrolledClass from "../Layout/Dashboard/StudentDashBoard/MyEnrolledClas
 import StudentProfile from "../Layout/Dashboard/StudentDashBoard/StudentProfile/StudentProfile";
 import UpdateCourse from "../Layout/Dashboard/TacherDashBoard/MyClasses/UpdateCourse";
 import Payment from "../Layout/Dashboard/Payment/Payment";
+import EnroledCourseDetails from "../Layout/Dashboard/StudentDashBoard/EnroledCourseDetails/EnroledCourseDetails";
+import PrivateRoutes from "../components/PrivateRoutes/PrivateRoutes";
+import MyPaymentDetails from "../Layout/Dashboard/StudentDashBoard/MyEnrolledClass/MyPaymentDetails";
 
 
 
@@ -34,11 +37,12 @@ const router = createBrowserRouter([
             },
             {
                 path: 'allCourses',
-                element: <AllCourse />
+                element: <AllCourse />,
+                loader: () => fetch('http://localhost:5000/api/v1/courseCount')
             },
             {
                 path: 'teachOnSkillMinds',
-                element: <TeachOnSkillMinds />
+                element: <PrivateRoutes><TeachOnSkillMinds /></PrivateRoutes>
             },
         ]
     },
@@ -88,7 +92,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'courseDetails/:id',
-                element: <CourseDetails />,
+                element: <PrivateRoutes><CourseDetails /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
             },
             {
@@ -107,8 +111,20 @@ const router = createBrowserRouter([
                 element: <StudentProfile />
             },
             {
-                path: 'payment',
-                element: <Payment />
+                path: 'paymentDetails/:id',
+                element: <MyPaymentDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/paymentAndCourse/details/${params.id}`)
+
+            },
+            {
+                path: 'enroledCourseDetails/:id',
+                element: <EnroledCourseDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment />,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
             },
 
         ]

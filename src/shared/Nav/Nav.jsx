@@ -20,7 +20,7 @@ const Nav = () => {
     if (isATeacherPending)
         return <progress></progress>
 
-    if (isAdmin)
+    if (isAdminpending)
         return <progress></progress>
     return (
         <Navbar fluid rounded className=' bg-blue-300'>
@@ -50,7 +50,7 @@ const Nav = () => {
                             isTeacher && !isAdmin &&
                             <Link to='/dashboard/addCourse'>Dashboard</Link>
                         }
-                        {
+                        {!isAdmin && !isTeacher &&
                             <Link to='/dashboard/myEnroledCourses'>Dashboard</Link>
                         }
 

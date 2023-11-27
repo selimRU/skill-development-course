@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { Hourglass } from "react-loader-spinner";
 import useAuth from "../../Hooks/useAuth";
 
-const PrivateRoutes = () => {
+const PrivateRoutes = ({ children }) => {
     const location = useLocation()
     const { user, loading } = useAuth()
     if (loading)

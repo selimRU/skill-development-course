@@ -1,12 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-// import useCart from "../../../Hooks/useCart";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 
-const Checkout = () => {
+const Checkout = ({ courseItem }) => {
+
+    const { title, price, image, email } = courseItem
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('')
     console.log(transactionId);
@@ -15,40 +16,32 @@ const Checkout = () => {
     const { user } = useAuth()
     const stripe = useStripe();
     const elements = useElements();
-    const totalPrice = carts.reduce((acc, item) => (acc + item.price), 0)
+    // const totalPrice = carts.reduce((acc, item) => (acc + item.price), 0)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (totalPrice > 0) {
-            axiosSecure.post('/create-payment-intent', { price: totalPrice })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price: price })
                 .then(res => {
                     console.log(res.data);
                     setClientSecret(res.data.clientSecret)
                 })
         }
-
-    }, [])
-
+    }, [price])
     const handleSubmit = async (event) => {
         // Block native form submission.
         event.preventDefault();
 
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
             return;
         }
 
-        // Get a reference to a mounted CardElement. Elements knows how
-        // to find your CardElement because there can only ever be one of
-        // each type of element.
         const card = elements.getElement(CardElement);
 
         if (card == null) {
             return;
         }
 
-        // Use your card Element with other Stripe.js APIs
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
@@ -81,17 +74,17 @@ const Checkout = () => {
             }
         }
         const payments = {
-            email: user.email,
-            transactionId: paymentIntent.id,
-            price: totalPrice,
+            email: user?.email,
+            transactionId: transactionId,
+            price: price,
             date: new Date(),
-            cartIds: carts.map(cart => cart._id),
-            foodIds: carts.map(cart => cart.foodId)
+            image: image,
+            title: title,
+            author_email: email
         }
 
         axiosSecure.post('/api/v1/payment', payments)
             .then(res => {
-                // console.log(res.data);
                 if (res.data.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -100,8 +93,7 @@ const Checkout = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    refetch()
-                    navigate('/dashBoard/paymentHistory')
+                    navigate('/dashboard/myEnroledCourses')
                 }
             })
     }
@@ -125,7 +117,7 @@ const Checkout = () => {
                     }}
                 />
                 <button className=" bg-blue-400 hover:bg-blue-600 px-3 py-1 hover:text-white rounded-md mt-3" type="submit" disabled={!stripe || !clientSecret}>
-                    Pay
+                    Pay For Course
                 </button>
                 {
                     transactionId &&

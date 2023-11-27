@@ -6,13 +6,15 @@ import Swal from "sweetalert2";
 // import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import useUsers from '../../../../Hooks/useUsers';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 
 
 
 
 const Allusers = () => {
-    const [users] = useUsers()
+    const axiosSecure = useAxiosSecure()
+    const [users, refetch] = useUsers()
     console.log(users);
     const [disable, setDisable] = useState(true)
     // const axiosSecure = useAxiosSecure()

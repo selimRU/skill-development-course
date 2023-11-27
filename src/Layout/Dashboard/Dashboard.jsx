@@ -17,9 +17,10 @@ const Dashboard = () => {
         return <p>loading...</p>
     }
     return (
-        <div className=" roboto max-w-6xl mx-auto flex flex-col md:flex-row gap-5 my-5">
-            <div className=" max-h-sm w-full md:w-2/5 lg:w-2/5 bg-blue-300 space-y-4 p-5">
-                {/* isAdmin && !isTeacher && */}
+        <div className=" roboto max-w-6xl mx-auto flex gap-5 my-5">
+            <div className=" max-h-sm md:w-2/5 lg:w-2/5 bg-blue-300 space-y-4 p-5">
+                {
+                    isAdmin && !isTeacher &&
                     <div>
                         <div className=" flex flex-col md:flex-col lg:flex-row items-center gap-1 mb-3">
                             <FaCodePullRequest />
@@ -38,8 +39,9 @@ const Dashboard = () => {
                             <NavLink to='/dashBoard/profile'>PROFILE</NavLink>
                         </div>
                     </div>
-             
-                    // isTeacher && !isAdmin &&
+                }
+
+                {isTeacher && !isAdmin &&
                     <div>
                         <div className=" flex flex-col md:flex-col lg:flex-row items-center gap-1 mb-3">
                             <MdLibraryAdd />
@@ -54,7 +56,8 @@ const Dashboard = () => {
                             <NavLink to='/dashBoard/teacherProfile'>MY PROFILE</NavLink>
                         </div>
                     </div>
-                     {/* <p>!isAdmin && !isTeacher && </p> */}
+                }
+                {!isAdmin && !isTeacher &&
                     <div>
                         <div className=" flex flex-col md:flex-col lg:flex-row items-center gap-1 mb-3">
                             <MdRateReview />
@@ -65,7 +68,8 @@ const Dashboard = () => {
                             <NavLink to='/dashBoard/studentProfile'>MY PROFILE</NavLink>
                         </div>
                     </div>
-               
+                }
+
                 <div>
                     <div className=" border-b-2 border-white my-5"></div>
                     <div className=" flex flex-col md:flex-col lg:flex-row items-center gap-1 mb-3">
@@ -86,7 +90,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className=" w-full">
+            <div className=" w-full" >
                 <Outlet></Outlet>
             </div>
         </div>
