@@ -74,13 +74,13 @@ const Checkout = ({ courseItem }) => {
             }
         }
         const payments = {
-            email: user?.email,
+            student_email: user?.email,
             transactionId: transactionId,
             price: price,
             date: new Date(),
             image: image,
             title: title,
-            author_email: email
+            email: email
         }
 
         axiosSecure.post('/api/v1/payment', payments)

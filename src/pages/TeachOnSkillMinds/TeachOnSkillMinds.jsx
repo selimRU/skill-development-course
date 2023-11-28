@@ -58,7 +58,7 @@ const TeachOnSkillMinds = () => {
             })
     }
     return (
-        <div className=' h-screen'>
+        <div className=' max-h-screen'>
             {
                 myRequest?.myRequest?.status === 'accepted' ?
                     <div>

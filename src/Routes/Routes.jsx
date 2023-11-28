@@ -4,7 +4,6 @@ import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
-import CourseDetails from "../Layout/Dashboard/TacherDashBoard/MyClasses/CourseDetails";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import TeachOnSkillMinds from "../pages/TeachOnSkillMinds/TeachOnSkillMinds";
 import AllCourseAdmin from "../Layout/Dashboard/AdminDashBoard/AllCourseAdmin/AllCourseAdmin";
@@ -22,6 +21,7 @@ import Payment from "../Layout/Dashboard/Payment/Payment";
 import EnroledCourseDetails from "../Layout/Dashboard/StudentDashBoard/EnroledCourseDetails/EnroledCourseDetails";
 import PrivateRoutes from "../components/PrivateRoutes/PrivateRoutes";
 import MyPaymentDetails from "../Layout/Dashboard/StudentDashBoard/MyEnrolledClass/MyPaymentDetails";
+import TeachersEnrolledCourses from "../Layout/Dashboard/TacherDashBoard/MyClasses/TeachersEnrolledCourses";
 
 
 
@@ -72,7 +72,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'allCourses',
-                element: <AllCourseAdmin />
+                element: <AllCourseAdmin />,
+                loader: () => fetch('http://localhost:5000/api/v1/courseCount')
             },
             {
                 path: 'profile',
@@ -93,9 +94,9 @@ const router = createBrowserRouter([
                 element: <TeacherProfile />
             },
             {
-                path: 'courseDetails/:id',
-                element: <PrivateRoutes><CourseDetails /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
+                path: 'courseDetails/:email',
+                element: <PrivateRoutes><TeachersEnrolledCourses /></PrivateRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/getCourse/${params.email}`)
             },
             {
                 path: 'updateCourse/:id',

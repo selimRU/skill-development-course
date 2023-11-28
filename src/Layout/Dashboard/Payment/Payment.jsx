@@ -12,7 +12,7 @@ const Payment = () => {
         <div >
             < Elements stripe={stripePromise}>
                 {
-                    courseEnroled.map(courseItem => <Checkout
+                    courseEnroled?.map(courseItem => <Checkout
                         key={courseItem._id}
                         courseItem={courseItem}
                     ></Checkout>)}

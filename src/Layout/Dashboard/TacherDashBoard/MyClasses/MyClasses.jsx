@@ -6,7 +6,7 @@ import MyCoursesCard from "./MyCoursesCard";
 const MyClasses = () => {
     const { user, loading } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: courses = [], refetch } = useQuery({
+    const { data: courses , refetch } = useQuery({
         queryKey: ['courses', user?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -18,7 +18,7 @@ const MyClasses = () => {
     return (
         <div>
             {
-                courses.map(myCourse => <MyCoursesCard
+                courses?.map(myCourse => <MyCoursesCard
                     key={myCourse._id}
                     myCourse={myCourse}
                     refetch={refetch}

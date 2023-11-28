@@ -1,15 +1,11 @@
-import { Link, useLoaderData } from "react-router-dom";
-'use client';
+import { Card } from 'flowbite-react';
+import React from 'react';
 
-import { Button, Card } from 'flowbite-react';
-
-const CourseDetails = () => {
-    const course = useLoaderData()
-    const { _id, title, image, name, email, price, description } = course
-    console.log(course);
+const TeachersEnrolledCoursesCard = ({ course }) => {
+    const { image, title, name, price, description } = course
     return (
-        <div className=" ">
-            <Card
+        <div className=''>
+            < Card
                 className="max-w-xl mx-auto my-5"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
             // imgSrc={image}
@@ -27,10 +23,9 @@ const CourseDetails = () => {
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {description}
                 </p>
-                <Button gradientDuoTone="greenToBlue"><Link to='dashboard/payment'>Pay</Link></Button>
             </Card>
         </div>
     );
 };
 
-export default CourseDetails;
+export default TeachersEnrolledCoursesCard;

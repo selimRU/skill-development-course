@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import AllCourseCard from "./AllCourseCard";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 
 const AllCourse = () => {
     // const [courses] = useCourses()
     const axiosSecure = useAxiosSecure()
-    const [courses, setCourses] = useState([])
-    const [query, setQueary] = useState('')
+    // const [courses, setCourses] = useState([])
+    const [search, setSearch] = useState('')
     const [totalItemPerPage, setTotalItemPerPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(0)
     const totalCount = useLoaderData()
@@ -19,22 +20,38 @@ const AllCourse = () => {
     const pages = Math.ceil(totalCount?.allCourses
         / totalItemPerPage)
 
-    useEffect(() => {
-        axiosSecure.get(`/api/v1/allCourses?page=${pageNumber}&size=${totalItemPerPage}`)
-            .then(res => {
-                console.log(res.data);
-                const filtered = res.data?.filter(course => course.status === "accepted")
-                console.log(filtered);
-                setCourses(filtered)
-                if (query) {
-                    const searchedCourses = filtered.filter(course => course.title.toLowerCase().includes(query.toLowerCase()))
-                    setCourses(searchedCourses)
-                }
-                else {
-                    setCourses(filtered)
-                }
-            })
-    }, [pageNumber, totalItemPerPage, query])
+    const { data: courses = [], refetch } = useQuery({
+        queryKey: ['courses', pageNumber, totalItemPerPage, search],
+        queryFn: async () => {
+            const data = await axiosSecure.get(`/api/v1/allCourses?page=${pageNumber}&size=${totalItemPerPage}&search=${search}`)
+            console.log(data.data);
+            const filtered = data.data?.filter(course => course.status === "accepted")
+            console.log(filtered);
+            return filtered;
+            // console.log(res.data)
+            // const filtered = res.data?.filter(course => course.status === "accepted")
+            // console.log(filtered);
+            return res;
+        }
+    })
+
+
+    // useEffect(() => {
+    //     axiosSecure.get(`/api/v1/allCourses?page=${pageNumber}&size=${totalItemPerPage}&search=${search}`)
+    //         .then(res => {
+    //             console.log(res.data);
+    //             const filtered = res.data?.filter(course => course.status === "accepted")
+    //             console.log(filtered);
+    //             setCourses(filtered)
+    //             if (query) {
+    //                 const searchedCourses = filtered.filter(course => course.title.toLowerCase().includes(query.toLowerCase()))
+    //                 setCourses(searchedCourses)
+    //             }
+    //             else {
+    //                 setCourses(filtered)
+    //             }
+    //         })
+    // }, [pageNumber, totalItemPerPage, query])
 
 
     const handlePerPage = (e) => {
@@ -57,12 +74,12 @@ const AllCourse = () => {
     return (
         <div className="max-w-6xl mx-auto my-10 space-y-10">
             <div className=" flex justify-center">
-                <input onChange={(e) => setQueary(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
+                <input onChange={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
                 {/* <button >search</button> */}
             </div>
             <div className=" grid md:grid-cols-2 items-center gap-5 justify-between">
                 {
-                    courses.map(course => <AllCourseCard
+                    courses?.map(course => <AllCourseCard
                         key={course._id}
                         course={course}
                     ></AllCourseCard>)

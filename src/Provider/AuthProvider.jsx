@@ -2,13 +2,14 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 // import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { auth } from "../Firebase/Firebase_config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null)
 const provider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    // const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
 
 
     // google login
@@ -48,17 +49,21 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user)
             setLoading(false)
-            // console.log(user);
-            // if (user) {
-            //     const info = { email: user.email }
-            //     axiosPublic.post('api/v1/jwt', info)
-            //         .then(res => {
-            //             console.log(res.data.token);
-            //             if (res.data.token) {
-            //                 localStorage.setItem('token', res.data.token)
-            //             }
-            //         })
-            // }
+            console.log(user);
+            if (user) {
+                const info = { email: user.email }
+                axiosPublic.post('api/v1/jwt', info)
+                    .then(res => {
+                        console.log(res.data.token);
+                        if (res.data.token) {
+                            localStorage.setItem('token', res.data.token)
+                        }
+                        else {
+                            localStorage.removeItem('token')
+                        }
+                        setLoading(false)
+                    })
+            }
             // else {
             //     localStorage.removeItem('token')
             // }
@@ -69,7 +74,7 @@ const AuthProvider = ({ children }) => {
             return unsubscribe()
         }
     }, [])
-    // axiosPublic
+
     // auth values
     const authValues = {
         loginWithGoogle,

@@ -9,6 +9,7 @@ import useUsers from '../../../../Hooks/useUsers';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { useLoaderData } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
@@ -17,6 +18,7 @@ import { useLoaderData } from 'react-router-dom';
 const Allusers = () => {
     const [disable, setDisable] = useState(true)
     const axiosSecure = useAxiosSecure()
+    const [search, setSearch] = useState('')
     const [totalItemPerPage, setTotalItemPerPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(0)
     const totalCount = useLoaderData()
@@ -26,9 +28,9 @@ const Allusers = () => {
         / totalItemPerPage)
 
     const { data: users = [], refetch } = useQuery({
-        queryKey: ['users', pageNumber, totalItemPerPage],
+        queryKey: ['users', pageNumber, totalItemPerPage, search],
         queryFn: async () => {
-            const data = await axiosSecure.get(`/api/v1/getUsers?page=${pageNumber}&size=${totalItemPerPage}`)
+            const data = await axiosSecure.get(`/api/v1/getUsers?page=${pageNumber}&size=${totalItemPerPage}&search=${search}`)
             console.log(data);
             return data.data
         }
@@ -65,7 +67,6 @@ const Allusers = () => {
             refetch()
         }
     }
-
     // const handleMakeTeacher = (id) => {
     //     axiosSecure.patch(`/api/v1/makeAdmin/${id}`)
     //         .then(res => {
@@ -96,6 +97,10 @@ const Allusers = () => {
     // }
     return (
         <div>
+            <div className=" flex justify-center">
+                <input onChange={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
+                {/* <button >search</button> */}
+            </div>
             <Table>
                 <Table.Head>
                     <Table.HeadCell>Serial</Table.HeadCell>
