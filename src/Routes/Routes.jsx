@@ -62,11 +62,13 @@ const router = createBrowserRouter([
             // Admin part
             {
                 path: 'teacherRequest',
-                element: <TeacherRequest />
+                element: <TeacherRequest />,
+                loader: () => fetch('http://localhost:5000/api/v1/teacherRequest/Count')
             },
             {
                 path: 'allUsers',
-                element: <Allusers />
+                element: <Allusers />,
+                loader: () => fetch('http://localhost:5000/api/v1/getUsers/count')
             },
             {
                 path: 'allCourses',

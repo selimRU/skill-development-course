@@ -8,25 +8,33 @@ import { useLoaderData } from "react-router-dom";
 
 const AllCourse = () => {
     // const [courses] = useCourses()
-    const [courses, setCourses] = useState([])
     const axiosSecure = useAxiosSecure()
-    const [filteredCourses, setFilteredCourses] = useState([])
+    const [courses, setCourses] = useState([])
     const [query, setQueary] = useState('')
-    console.log(filteredCourses);
-    const [totalItemPerPage, setTotalItemPerPage] = useState(2)
+    const [totalItemPerPage, setTotalItemPerPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(0)
-    const  totalCount  = useLoaderData()
+    const totalCount = useLoaderData()
     console.log(totalCount);
 
-    const pages = Math.ceil(totalCount.allCourses
+    const pages = Math.ceil(totalCount?.allCourses
         / totalItemPerPage)
 
     useEffect(() => {
-        axiosSecure.get('/api/v1/allCourses')
+        axiosSecure.get(`/api/v1/allCourses?page=${pageNumber}&size=${totalItemPerPage}`)
             .then(res => {
-                setCourses(res.data)
+                console.log(res.data);
+                const filtered = res.data?.filter(course => course.status === "accepted")
+                console.log(filtered);
+                setCourses(filtered)
+                if (query) {
+                    const searchedCourses = filtered.filter(course => course.title.toLowerCase().includes(query.toLowerCase()))
+                    setCourses(searchedCourses)
+                }
+                else {
+                    setCourses(filtered)
+                }
             })
-    }, [])
+    }, [pageNumber, totalItemPerPage, query])
 
 
     const handlePerPage = (e) => {
@@ -45,27 +53,16 @@ const AllCourse = () => {
             setPageNumber(pageNumber + 1)
         }
     }
-    useEffect(() => {
-        const allCourses = courses.filter(course => course.status === 'accepted')
-        setFilteredCourses(allCourses)
-        if (query) {
-            const searchedCourses = allCourses.filter(course => course.title.toLowerCase().includes(query.toLowerCase()))
-            setFilteredCourses(searchedCourses)
-        }
-        else {
-            setFilteredCourses(allCourses)
-        }
-    }, [courses, query])
 
     return (
         <div className="max-w-6xl mx-auto my-10 space-y-10">
             <div className=" flex justify-center">
-                <input onChange={(e) => setQueary(e.target.value)} type="search" name="search" id="" placeholder="Search your course" />
+                <input onChange={(e) => setQueary(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
                 {/* <button >search</button> */}
             </div>
             <div className=" grid md:grid-cols-2 items-center gap-5 justify-between">
                 {
-                    filteredCourses.map(course => <AllCourseCard
+                    courses.map(course => <AllCourseCard
                         key={course._id}
                         course={course}
                     ></AllCourseCard>)
@@ -85,10 +82,10 @@ const AllCourse = () => {
                     <button onClick={handleNext}>Next</button>
                 </div>
                 <div>
-                    <select onClick={handlePerPage} name="" id="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                    <select onClick={handlePerPage} name="select" id="select">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
                     </select>
                 </div>
             </div>
