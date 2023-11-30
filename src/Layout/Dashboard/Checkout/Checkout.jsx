@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 
 const Checkout = ({ courseItem }) => {
 
-    const { title, price, image, email } = courseItem
+    const { _id, title, price, image, email } = courseItem
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('')
     console.log(transactionId);
@@ -75,12 +75,13 @@ const Checkout = ({ courseItem }) => {
         }
         const payments = {
             student_email: user?.email,
-            transactionId: transactionId,
+            transactionId: paymentIntent.id,
             price: price,
             date: new Date(),
             image: image,
             title: title,
-            email: email
+            email: email,
+            course_id: _id
         }
 
         axiosSecure.post('/api/v1/payment', payments)

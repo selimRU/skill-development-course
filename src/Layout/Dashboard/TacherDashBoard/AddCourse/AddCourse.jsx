@@ -60,7 +60,7 @@ const AddCourse = () => {
     }
     return (
         <div>
-            <h3 className=' text-center font-semibold text-3xl'>ADD AN COURSE</h3>
+            <h3 className=' text-center font-semibold text-3xl'>ADD A COURSE</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-4 justify-center mx-auto w-full">
                 <div>
                     <div className="mb-2 block">

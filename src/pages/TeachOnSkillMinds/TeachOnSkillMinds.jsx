@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 
 const TeachOnSkillMinds = () => {
@@ -36,7 +37,6 @@ const TeachOnSkillMinds = () => {
         const teacherInfo = {
             name: user?.displayName,
             email: data.email,
-            name: data.name,
             image: user?.photoURL,
             category: data.category,
             experience: data.experience,
@@ -58,7 +58,10 @@ const TeachOnSkillMinds = () => {
             })
     }
     return (
-        <div className=' max-h-screen'>
+        <div>
+            <Helmet>
+                <title>Skill Minds - Teach On SkillMinds</title>
+            </Helmet>
             {
                 myRequest?.myRequest?.status === 'accepted' ?
                     <div>
@@ -119,7 +122,7 @@ const TeachOnSkillMinds = () => {
                                             Select Exprience
                                         </option>
                                         <option value="beginner">Beginner</option>
-                                        <option value="pizza">Experienced</option>
+                                        <option value="experienced">Experienced</option>
                                         <option value="some idea">Some idea</option>
                                     </Select>
                                 </div>

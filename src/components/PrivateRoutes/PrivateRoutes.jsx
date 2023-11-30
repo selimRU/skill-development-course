@@ -16,7 +16,7 @@ const PrivateRoutes = ({ children }) => {
             colors={['#306cce', '#72a1ed']}
         />
     if (!user) {
-        return <Navigate state={location.pathname} to='/logIn'></Navigate>
+        return <Navigate state={location.pathname} to='/signin'></Navigate>
     }
     return children
 };

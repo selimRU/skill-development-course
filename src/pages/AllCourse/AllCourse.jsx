@@ -1,16 +1,13 @@
-
 import { useEffect, useState } from "react";
-// import useCourses from "../../Hooks/useCourses";
 import AllCourseCard from "./AllCourseCard";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const AllCourse = () => {
-    // const [courses] = useCourses()
     const axiosSecure = useAxiosSecure()
-    // const [courses, setCourses] = useState([])
     const [search, setSearch] = useState('')
     const [totalItemPerPage, setTotalItemPerPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(0)
@@ -28,31 +25,9 @@ const AllCourse = () => {
             const filtered = data.data?.filter(course => course.status === "accepted")
             console.log(filtered);
             return filtered;
-            // console.log(res.data)
-            // const filtered = res.data?.filter(course => course.status === "accepted")
-            // console.log(filtered);
             return res;
         }
     })
-
-
-    // useEffect(() => {
-    //     axiosSecure.get(`/api/v1/allCourses?page=${pageNumber}&size=${totalItemPerPage}&search=${search}`)
-    //         .then(res => {
-    //             console.log(res.data);
-    //             const filtered = res.data?.filter(course => course.status === "accepted")
-    //             console.log(filtered);
-    //             setCourses(filtered)
-    //             if (query) {
-    //                 const searchedCourses = filtered.filter(course => course.title.toLowerCase().includes(query.toLowerCase()))
-    //                 setCourses(searchedCourses)
-    //             }
-    //             else {
-    //                 setCourses(filtered)
-    //             }
-    //         })
-    // }, [pageNumber, totalItemPerPage, query])
-
 
     const handlePerPage = (e) => {
         const val = parseInt(e.target.value)
@@ -73,6 +48,9 @@ const AllCourse = () => {
 
     return (
         <div className="max-w-6xl mx-auto my-10 space-y-10">
+            <Helmet>
+                <title>Skill Minds - All Courses</title>
+            </Helmet>
             <div className=" flex justify-center">
                 <input onChange={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
                 {/* <button >search</button> */}

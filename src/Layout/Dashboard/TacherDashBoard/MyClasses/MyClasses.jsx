@@ -16,7 +16,7 @@ const MyClasses = () => {
         }
     })
     return (
-        <div>
+        <div className=" grid md:grid-cols-2 items-center gap-5 justify-between">
             {
                 courses?.map(myCourse => <MyCoursesCard
                     key={myCourse._id}

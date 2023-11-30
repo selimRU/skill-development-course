@@ -1,12 +1,8 @@
-;
-// import CourseCard from "./CourseCard";
-
 'use client';
 
 import { Table } from 'flowbite-react';
 import Swal from "sweetalert2";
 import { useState } from "react";
-import useCourses from '../../../../Hooks/useCourses';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -16,7 +12,6 @@ import { useQuery } from '@tanstack/react-query';
 
 const AllCourseAdmin = () => {
     const axiosSecure = useAxiosSecure()
-    // const [courses, setCourses] = useState([])
     const [search, setSearch] = useState('')
     const [totalItemPerPage, setTotalItemPerPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(0)
@@ -95,14 +90,6 @@ const AllCourseAdmin = () => {
     }
 
     return (
-        // <div className=" grid md:grid-cols-2 items-center gap-5 justify-between">
-        //     {
-        //         courses.map(course => <CourseCard
-        //             key={course._id}
-        //             course={course}
-        //         ></CourseCard>)
-        //     }
-        // </div>
         <div>
             <div className=" flex justify-center">
                 <input onChange={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
@@ -161,7 +148,7 @@ const AllCourseAdmin = () => {
                             <Table.Cell>
                                 {course.status === 'accepted' ?
                                     <button className="font-medium text-cyan-600  dark:text-cyan-500">
-                                        <Link to={`/dashboard/courseDetails/${course._id}`}>See progress</Link>
+                                        <Link to='/dashboard/coursesFeedbackAdmin'>See progress</Link>
                                     </button>
                                     :
                                     <button disabled className="font-medium text-cyan-600  dark:text-cyan-500">

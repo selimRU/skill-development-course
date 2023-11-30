@@ -168,7 +168,7 @@ const SignUp = () => {
                             <FaGoogle className=" mr-2" /> JoinwithGoole
                         </Button>
                     </form>
-                    <h4 className=" text-center my-5 ">Already have an account? <Link to='/logIn'><span className=" text-blue-600 underline">Please LogIn</span></Link></h4>
+                    <h4 className=" text-center my-5 ">Already have an account? <Link to='/signin'><span className=" text-blue-600 underline">Please LogIn</span></Link></h4>
                 </div>
             </div>
         </div>

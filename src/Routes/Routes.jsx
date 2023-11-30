@@ -20,8 +20,9 @@ import UpdateCourse from "../Layout/Dashboard/TacherDashBoard/MyClasses/UpdateCo
 import Payment from "../Layout/Dashboard/Payment/Payment";
 import EnroledCourseDetails from "../Layout/Dashboard/StudentDashBoard/EnroledCourseDetails/EnroledCourseDetails";
 import PrivateRoutes from "../components/PrivateRoutes/PrivateRoutes";
-import MyPaymentDetails from "../Layout/Dashboard/StudentDashBoard/MyEnrolledClass/MyPaymentDetails";
 import TeachersEnrolledCourses from "../Layout/Dashboard/TacherDashBoard/MyClasses/TeachersEnrolledCourses";
+import MyEnroledCourseAssignment from "../Layout/Dashboard/StudentDashBoard/MyEnrolledClass/MyEnroledCourseAssignment";
+import CourseFeedback from "../Layout/Dashboard/AdminDashBoard/AllCourseAdmin/CourseFeedback";
 
 
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: 'allCourses',
                 element: <AllCourse />,
-                loader: () => fetch('http://localhost:5000/api/v1/courseCount')
+                loader: () => fetch('https://student-and-class-management-server.vercel.app/api/v1/courseCount')
             },
             {
                 path: 'teachOnSkillMinds',
@@ -63,17 +64,22 @@ const router = createBrowserRouter([
             {
                 path: 'teacherRequest',
                 element: <TeacherRequest />,
-                loader: () => fetch('http://localhost:5000/api/v1/teacherRequest/Count')
+                loader: () => fetch('https://student-and-class-management-server.vercel.app/api/v1/teacherRequest/Count')
             },
             {
                 path: 'allUsers',
                 element: <Allusers />,
-                loader: () => fetch('http://localhost:5000/api/v1/getUsers/count')
+                loader: () => fetch('https://student-and-class-management-server.vercel.app/api/v1/getUsers/count')
+            },
+            {
+                path: 'coursesFeedbackAdmin',
+                element: <CourseFeedback />,
+                loader: () => fetch('https://student-and-class-management-server.vercel.app/api/v1/reviewsCount')
             },
             {
                 path: 'allCourses',
                 element: <AllCourseAdmin />,
-                loader: () => fetch('http://localhost:5000/api/v1/courseCount')
+                loader: () => fetch('https://student-and-class-management-server.vercel.app/api/v1/courseCount')
             },
             {
                 path: 'profile',
@@ -94,14 +100,14 @@ const router = createBrowserRouter([
                 element: <TeacherProfile />
             },
             {
-                path: 'courseDetails/:email',
+                path: 'courseDetails/:title',
                 element: <PrivateRoutes><TeachersEnrolledCourses /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/getCourse/${params.email}`)
+                loader: ({ params }) => fetch(`https://student-and-class-management-server.vercel.app/api/v1/getAssignmentByTitle/${params.title}`)
             },
             {
                 path: 'updateCourse/:id',
                 element: <UpdateCourse />,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://student-and-class-management-server.vercel.app/api/v1/course/${params.id}`)
             },
 
             // student part
@@ -114,20 +120,19 @@ const router = createBrowserRouter([
                 element: <StudentProfile />
             },
             {
-                path: 'paymentDetails/:id',
-                element: <MyPaymentDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/paymentAndCourse/details/${params.id}`)
-
+                path: 'assignment/:title',
+                element: <MyEnroledCourseAssignment />,
+                loader: ({ params }) => fetch(`https://student-and-class-management-server.vercel.app/api/v1/assignmentCounByTitle/${params.title}`)
             },
             {
                 path: 'enroledCourseDetails/:id',
                 element: <EnroledCourseDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://student-and-class-management-server.vercel.app/api/v1/course/${params.id}`)
             },
             {
                 path: 'payment/:id',
                 element: <Payment />,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://student-and-class-management-server.vercel.app/api/v1/course/${params.id}`)
             },
 
         ]

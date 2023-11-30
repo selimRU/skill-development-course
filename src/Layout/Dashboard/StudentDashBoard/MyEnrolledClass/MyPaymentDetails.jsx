@@ -1,14 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 
 
-const MyPaymentDetails = () => {
-    const paymentDetails = useLoaderData()
-    console.log(paymentDetails);
-    return (
-        <div>
+// const MyPaymentDetails = () => {
+//     const paymentDetails = useLoaderData()
+//     console.log(paymentDetails);
+//     return (
+//         <div>
 
-        </div>
-    );
-};
+//         </div>
+//     );
+// };
 
-export default MyPaymentDetails;
+// export default MyPaymentDetails;

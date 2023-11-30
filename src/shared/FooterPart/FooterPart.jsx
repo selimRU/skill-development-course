@@ -11,17 +11,17 @@ const FooterPart = () => {
                     <div>
                         <Footer.Brand
                             href="https://flowbite.com"
-                            src="https://flowbite.com/docs/images/logo.svg"
+                            src="https://i.ibb.co/fCGRmvZ/skill-logo-removebg-preview.png"
                             alt="Flowbite Logo"
-                            name="Flowbite"
+                            name="Skill Minds"
                         />
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                         <div>
                             <Footer.Title title="about" />
                             <Footer.LinkGroup col>
-                                <Footer.Link href="#">Flowbite</Footer.Link>
-                                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                                <Footer.Link href="#">Skill Minds</Footer.Link>
+                                <Footer.Link href="#">Contact</Footer.Link>
                             </Footer.LinkGroup>
                         </div>
                         <div>

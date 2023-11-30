@@ -17,11 +17,11 @@ const Nav = () => {
         navigate('/signin')
     }
 
-    if (isATeacherPending)
-        return <progress></progress>
+    // if (isATeacherPending)
+    //     return <progress></progress>
 
-    if (isAdminpending)
-        return <progress></progress>
+    // if (isAdminpending)
+    //     return <progress></progress>
     return (
         <Navbar fluid rounded className=' bg-blue-300'>
             <Navbar.Brand href="/">
@@ -61,10 +61,10 @@ const Nav = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <NavLink to="/" active>
+                <NavLink to="/" >
                     Home
                 </NavLink>
-                <NavLink to="/allCourses" active>
+                <NavLink to="/allCourses" >
                     All Courses
                 </NavLink>
                 <NavLink to='/teachOnSkillMinds'>Teach on Skill Minds</NavLink>

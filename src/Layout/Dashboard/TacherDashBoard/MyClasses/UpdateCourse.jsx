@@ -7,9 +7,12 @@ import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
 const UpdateCourse = () => {
     const course = useLoaderData()
-    const { _id, title, image, name, email, price, description } = course
+    console.log(course);
+    const { _id, title, image, name, email, price, description } = course[0]
+    // console.log(course[0]);
     const [, refetch] = useCourses()
     const axiosSecure = useAxiosSecure()
     const {
@@ -42,13 +45,13 @@ const UpdateCourse = () => {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
-                            title: "Item updated successfully",
+                            title: "Course updated successfully",
                             showConfirmButton: false,
                             timer: 1500
                         })
                     }
                     refetch()
-                    reset()
+                    // reset()
                 })
         }
     }
@@ -68,13 +71,13 @@ const UpdateCourse = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="small" value="Name" />
                     </div>
-                    <TextInput defaultValue={name} {...register("name", { required: true })} id="small" type="text" sizing="sm" readOnly />
+                    <TextInput defaultValue={name} {...register("name", { required: true })} id="small" type="text" sizing="sm"  />
                 </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="small" value="Email" />
                     </div>
-                    <TextInput defaultValue={email} {...register("email", { required: true })} id="small" type="email" sizing="sm" readOnly />
+                    <TextInput defaultValue={email} {...register("email", { required: true })} id="small" type="email" sizing="sm"  />
                 </div>
                 <div>
                     <div className="mb-2 block">
@@ -96,7 +99,7 @@ const UpdateCourse = () => {
                         id="image"
                     />
                 </div>
-                <Button type='submit'>Add Course</Button>
+                <Button type='submit'>Update Course</Button>
             </form>
         </div>
     );

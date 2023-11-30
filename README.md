@@ -1,8 +1,15 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Skill Minds
 
-Currently, two official plugins are available:
+This is a skill development website where you can develop your skill by learning various skill like web development,digital marketing etc.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+
+## Features
+
+ - Anyone can easily use this website for simple functionalities of this site.
+ - Clients can create user account by signin and then can login with that account easily.
+ - My website is responsive so clients can use it by mobile,tablet,laptop.
+ - This website is made based on skill development,anyone can use it for thire education purpose.
+ - Here this website has some private routes,so if a client want to use this site ,he has to create an account and then he can get access of those private routes.

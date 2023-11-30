@@ -1,9 +1,9 @@
-
+import err from '../../assets/404.gif'
 
 const Error = () => {
     return (
-        <div>
-            <h3>Error</h3>
+        <div className=' max-w-6xl mx-auto my-5'>
+            <img className=' max-w-[60%] mx-auto' src={err} alt="" />
         </div>
     );
 };

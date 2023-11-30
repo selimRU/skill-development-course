@@ -3,13 +3,11 @@
 
 import { Table } from 'flowbite-react';
 import Swal from "sweetalert2";
-// import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useState } from "react";
-import useUsers from '../../../../Hooks/useUsers';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { useLoaderData } from 'react-router-dom';
-import { useEffect } from 'react';
+
 
 
 
@@ -97,7 +95,7 @@ const Allusers = () => {
     // }
     return (
         <div>
-            <div className=" flex justify-center">
+            <div className=" flex justify-center my-3">
                 <input onChange={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder="Search your course" />
                 {/* <button >search</button> */}
             </div>
@@ -107,9 +105,6 @@ const Allusers = () => {
                     <Table.HeadCell>Image</Table.HeadCell>
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>Email</Table.HeadCell>
-                    <Table.HeadCell>
-                        Update
-                    </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {users?.map((user, index) =>
@@ -118,7 +113,7 @@ const Allusers = () => {
                                 {index + 1}
                             </Table.Cell>
                             <Table.Cell>
-                                <img src={user?.image} alt="" />
+                                <img className=' object-cover w-[100px] h-[100px]' src={user?.image} alt="" />
                             </Table.Cell>
                             <Table.Cell>{user?.name}</Table.Cell>
                             <Table.Cell>{user?.email}</Table.Cell>

@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const MyCoursesCard = ({ myCourse, refetch }) => {
     const axiosSecure = useAxiosSecure()
     const { _id, title, image, name, email, price, description, status } = myCourse
+    console.log(_id);
 
     const handleDeleteCourse = () => {
         axiosSecure.delete(`/api/v1/deleteCourse/${_id}`)
@@ -39,14 +40,14 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
 
     return (
         <div>
-            <Card className="max-w-sm" imgSrc={image} horizontal>
-                <div className=" flex flex-col md:flex-row justify-between gap-5 items-center">
+            <Card className="max-w-sm" imgSrc={image} collapse-horizontal >
+                <div className=" flex flex-col md:flex-col lg:flex-row justify-between gap-5 items-center">
                     <div className=" space-y-5">
-                        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {title}
+                        <h5 className="lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            Title: {title}
                         </h5>
                         <p className="font-normal text-gray-700 dark:text-gray-400">
-                            Teacher:{name}
+                            Teacher: {name}
                         </p>
                         <p className="font-normal text-gray-700 dark:text-gray-400">
                             Email: {email}
@@ -61,16 +62,16 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
                             Status: {status ? status : 'pending'}
                         </p>
                     </div>
-                    <div className=" flex flex-row justify-between lg:flex-col gap-5 items-center lg:space-y-5">
+                    <div className="flex flex-row lg:flex-col justify-between gap-5 items-center">
                         <div>
-                            <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/updateCourse/${_id}`}>Update</Link></Button>
+                            <Button className=" " gradientDuoTone="greenToBlue"><Link to={`/dashboard/updateCourse/${_id}`}> Update</Link></Button>
                         </div>
                         <div>
                             <Button onClick={handleDeleteCourse} gradientDuoTone="greenToBlue">Delete</Button>
                         </div>
                         <div>
                             {status ?
-                                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${_id}`}>See Details</Link></Button>
+                                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${title}`}>See Details</Link></Button>
                                 :
                                 <Button disabled gradientDuoTone="greenToBlue">See Details</Button>
                             }

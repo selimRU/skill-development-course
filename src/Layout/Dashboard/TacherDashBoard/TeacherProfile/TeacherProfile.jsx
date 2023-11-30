@@ -23,7 +23,7 @@ const TeacherProfile = () => {
 
                 < Table.Row key={profile._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell>
-                        <img src={profile?.image} alt="" />
+                        <img className=' w-[100px] h-[1oopx]' src={profile?.image} alt="" />
                     </Table.Cell>
                     <Table.Cell>{profile?.name}</Table.Cell>
                     <Table.Cell>{profile?.email}</Table.Cell>

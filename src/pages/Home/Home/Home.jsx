@@ -20,7 +20,7 @@ const Home = () => {
         };
     }, []); 
     return (
-        <div className=" max-w-6xl mx-auto ">
+        <div className=" max-w-6xl mx-auto px-3 md:px-0 lg:px-0 ">
             <Helmet>
                 <title>Skill Minds - Home</title>
             </Helmet>

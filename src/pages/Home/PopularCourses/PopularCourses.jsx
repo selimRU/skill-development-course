@@ -12,7 +12,7 @@ import courseImage6 from '../../../assets/popular-courses/gra.png'
 const PopularCourses = () => {
     return (
         <div className=' my-20'>
-            <h3 className=' text-xl md:text-2xl lg:text-4xl text-center font-semibold mb-5'>Our Most Enrolled Courses</h3>
+            <h3 className=' text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-5'>Our Most Enrolled Courses</h3>
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}

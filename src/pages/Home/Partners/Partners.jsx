@@ -8,13 +8,13 @@ import parner6 from '../../../assets/partners/tk.png'
 
 const Partners = () => {
     return (
-        <div className=" my-20 spy">
-            <div className=" space-y-3 mb-10">
-                <h2 className=" text-4xl font-semibold text-center">Our Collaborators</h2>
+        <div className=" my-20 ">
+            <div className=" space-y-3">
+                <h2 className=" lg:text-3xl font-semibold text-center">Our Collaborators</h2>
                 <p className=" text-center">Trusted over 100 companies and millions of learners all over the country</p>
             </div>
             <Marquee>
-                <div className=" flex items-center gap-5 md:gap-8 lg:gap-24">
+                <div className=" flex items-center gap-5 md:gap-8 lg:gap-24 mt-10">
                     <img className=" rounded-md w-[100px] h-[100px]" src={parner1} alt="" />
                     <img className=" rounded-md w-[100px] h-[100px]" src={parner2} alt="" />
                     <img className=" rounded-md w-[100px] h-[100px]" src={parner3} alt="" />
