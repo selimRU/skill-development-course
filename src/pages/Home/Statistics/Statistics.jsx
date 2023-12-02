@@ -8,7 +8,8 @@ import useEnrolment from "../../../Hooks/useEnrolment";
 
 const Statistics = () => {
     const { enroled, isEnrolPending } = useEnrolment()
-    const [count, setCount] = useState({})
+    const [courseCount, setCourseCount] = useState(0)
+    const [userCount, setUserCount] = useState(0)
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
 
@@ -22,10 +23,17 @@ const Statistics = () => {
     // })
 
     useEffect(() => {
+        axiosSecure.get('/api/v1/courseCount')
+            .then(res => {
+                console.log(res.data);
+                setCourseCount(res.data)
+            })
+    }, [])
+    useEffect(() => {
         axiosSecure.get('/api/v1/getUsers/count')
             .then(res => {
                 console.log(res.data);
-                setCount(res.data)
+                setUserCount(res.data)
             })
     }, [])
 
@@ -50,7 +58,7 @@ const Statistics = () => {
                                 <FaUsers className=" text-4xl" />
                             </div>
                             <div >
-                                <p className=" text-3xl">{count.usersCount}</p>
+                                <p className=" text-3xl">{userCount.usersCount}</p>
                                 <p className=" text-lg">Customers</p>
                             </div>
                         </div>
@@ -61,7 +69,7 @@ const Statistics = () => {
                                 <FaIceCream className=" text-4xl" am />
                             </div>
                             <div>
-                                <p className=" text-3xl">{count.couresCount}</p>
+                                <p className=" text-3xl">{courseCount.allCourses}</p>
                                 <p className=" text-lg">Products</p>
                             </div>
                         </div>

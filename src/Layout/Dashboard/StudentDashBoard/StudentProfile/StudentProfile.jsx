@@ -12,8 +12,9 @@ const StudentProfile = () => {
     }
     return (
         <div>
+            <h3 className=" text-2xl text-center font-semibold mb-5 border-b-2 border-blue-400 py-3 text-blue-400">My Profile</h3>
             <Helmet>
-                <title>Skill Minds - Student Profile</title>
+                <title>Skill Minds - My Profile</title>
             </Helmet>
             <Table>
                 <Table.Head>

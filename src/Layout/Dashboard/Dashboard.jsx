@@ -26,15 +26,15 @@ const Dashboard = () => {
                         <div>
                             <div className=" flex lg:flex-row items-center gap-1 mb-3">
                                 <FaCodePullRequest />
-                                <NavLink to={'/dashBoard/teacherRequest'}>TEACHER'S REQUEST</NavLink>
+                                <NavLink to={'/dashBoard/teacherRequest'}>TEACHER REQUEST</NavLink>
                             </div>
                             <div className="  flex lg:flex-row items-center gap-1 mb-3">
                                 <FaUser />
-                                <NavLink to='/dashboard/allUsers'>ALL USERS</NavLink>
+                                <NavLink to='/dashboard/allUsers'>USERS</NavLink>
                             </div>
                             <div className="  flex lg:flex-row items-center gap-1 mb-3">
                                 <SiGoogleclassroom />
-                                <NavLink to='/dashBoard/allCourses'>ALL COURSES</NavLink>
+                                <NavLink to='/dashBoard/allCourses'>COURSES</NavLink>
                             </div>
                             <div className="  flex lg:flex-row items-center gap-1 mb-3">
                                 <IoIosMan />
@@ -62,7 +62,7 @@ const Dashboard = () => {
                         <div>
                             <div className="  flex lg:flex-row items-center gap-1 mb-3">
                                 <MdRateReview />
-                                <NavLink to={'/dashBoard/myEnroledCourses'}>MY ENROLED COURSEES</NavLink>
+                                <NavLink to={'/dashBoard/myEnroledCourses'}> ENROLED COURSEES</NavLink>
                             </div>
                             <div className="  flex lg:flex-row items-center gap-1 mb-3">
                                 <IoIosMan />

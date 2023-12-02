@@ -1,5 +1,4 @@
 import React from 'react';
-'use client';
 import { useForm } from "react-hook-form"
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import Swal from 'sweetalert2';
@@ -11,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-
+console.log(image_hosting_api);
 const AddCourse = () => {
     const navigate = useNavigate()
     const { user } = useAuth()
@@ -25,41 +24,44 @@ const AddCourse = () => {
     } = useForm()
     const onSubmit = async (data) => {
         console.log(data)
-        const imageFile = { image: data.image[0] }
+        const imageFile = { image: data?.image[0] }
+        console.log(imageFile);
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 "content-type": "multipart/form-data"
             }
         })
+        const image = res.data?.data?.display_url
         console.log(res.data);
         if (res.data.success) {
             const courseInfo = {
                 title: data.title,
                 name: data.name,
                 email: data.email,
-                image: res.data.data.display_url,
+                image: image,
                 price: data.price,
                 description: data.description
             }
-            axiosSecure.post('/api/v1/addCourse', courseInfo)
+            await axiosSecure.post('/api/v1/addCourse', courseInfo)
                 .then(res => {
                     console.log(res.data.insertedId);
                     if (res.data.insertedId) {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
-                            title: "You have logged in successfully",
+                            title: `You have added ${data.title} course successfully`,
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        navigate('/dashboard/myClasses')
                     }
                 })
         }
-        navigate('/dashboard/myClasses')
+
         // reset()
     }
     return (
-        <div>
+        <div className=' px-5 md:px-0 lg:px-0 bg-blue-100 py-5'>
             <h3 className=' text-center font-semibold text-3xl'>ADD A COURSE</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-4 justify-center mx-auto w-full">
                 <div>
@@ -96,8 +98,6 @@ const AddCourse = () => {
                     <input
                         {...register('image', { required: true })}
                         type="file"
-                        name="image"
-                        id="image"
                     />
                 </div>
                 <Button type='submit'>Add Course</Button>

@@ -6,7 +6,7 @@ import MyCoursesCard from "./MyCoursesCard";
 const MyClasses = () => {
     const { user, loading } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: courses , refetch } = useQuery({
+    const { data: courses, refetch } = useQuery({
         queryKey: ['courses', user?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -16,14 +16,17 @@ const MyClasses = () => {
         }
     })
     return (
-        <div className=" grid md:grid-cols-2 items-center gap-5 justify-between">
-            {
-                courses?.map(myCourse => <MyCoursesCard
-                    key={myCourse._id}
-                    myCourse={myCourse}
-                    refetch={refetch}
-                ></MyCoursesCard>)
-            }
+        <div>
+            <h3 className=" text-2xl text-center font-semibold mb-5 border-b-2 border-blue-300 py-3 text-blue-400">My added Courses</h3>
+            <div className=" grid md:grid-cols-2 items-center gap-5 justify-between px-5 md:px-0 lg:px-0">
+                {
+                    courses?.map(myCourse => <MyCoursesCard
+                        key={myCourse._id}
+                        myCourse={myCourse}
+                        refetch={refetch}
+                    ></MyCoursesCard>)
+                }
+            </div>
         </div>
     );
 };

@@ -27,7 +27,7 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
                             Swal.fire({
                                 position: "top-end",
                                 icon: "success",
-                                title: "Your work has been saved",
+                                title: "Coursek has been deleted",
                                 showConfirmButton: false,
                                 timer: 1500
                             })
@@ -71,9 +71,9 @@ const MyCoursesCard = ({ myCourse, refetch }) => {
                         </div>
                         <div>
                             {status ?
-                                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${title}`}>See Details</Link></Button>
+                                <Button gradientDuoTone="greenToBlue"><Link to={`/dashboard/courseDetails/${title}`}>Details</Link></Button>
                                 :
-                                <Button disabled gradientDuoTone="greenToBlue">See Details</Button>
+                                <Button disabled gradientDuoTone="greenToBlue"> Details</Button>
                             }
                         </div>
                     </div>

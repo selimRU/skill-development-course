@@ -9,13 +9,15 @@ import { FaPlus } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { MdAssignmentInd } from "react-icons/md";
-
+import { MdAssignmentInd, MdOutlineJoinFull } from "react-icons/md";
+import { VscFileSubmodule } from "react-icons/vsc";
 
 const TeachersEnrolledCourses = () => {
     const courseDetails = useLoaderData()
     console.log(courseDetails);
     const { result } = courseDetails
+    const [enrolment, setEnrolment] = useState('')
+    const [assignment, setAssignment] = useState('')
     const [count, setCount] = useState()
     const [openModal, setOpenModal] = useState(false);
     const axiosPublic = useAxiosPublic()
@@ -25,8 +27,20 @@ const TeachersEnrolledCourses = () => {
     }
 
     useEffect(() => {
-        const res = axiosSecure.get('/api/v1/assignmentCount')
-        console.log(res.data);
+        axiosSecure.get('/api/v1/assignmentCount')
+            .then(res => {
+                const data = res.data.assignment
+                setAssignment(data)
+            })
+
+    }, [])
+
+    useEffect(() => {
+        axiosSecure.get('/api/v1/enrolmentCount')
+            .then(res => {
+                const data = res.data.enroledCount
+                setEnrolment(data)
+            })
     }, [])
 
     const {
@@ -60,14 +74,32 @@ const TeachersEnrolledCourses = () => {
     }
     return (
         <div>
-            <div className=" w-full lg:w-[250px] lg:h-[250px] md:h-[150px] bg-gradient-to-r from-fuchsia-500 to-fuchsia-200 rounded-md">
-                <div className="flex gap-5 items-center px-12 py-4">
+            <div className=" flex flex-col gap-5  md:flex-row w-full lg:w-[250px] lg:h-[250px] md:h-[150px]  rounded-md">
+                <div className="flex bg-gradient-to-r from-blue-600 to-blue-400 gap-5 items-center px-12 py-4 rounded-md">
+                    <div>
+                        <MdOutlineJoinFull className=" text-4xl" />
+                    </div>
+                    <div>
+                        <p className=" text-3xl">{enrolment}</p>
+                        <p className=" text-lg">Total Enrolment</p>
+                    </div>
+                </div>
+                <div className="flex bg-gradient-to-r from-blue-500 to-blue-400 gap-5 items-center px-12 py-4 rounded-md">
                     <div>
                         <MdAssignmentInd className=" text-4xl" />
                     </div>
                     <div>
-                        <p className=" text-3xl">{'totalCount?.result'}</p>
-                        <p className=" text-lg">Total Enrolment</p>
+                        <p className=" text-3xl">{assignment}</p>
+                        <p className=" text-lg">Total Assignment</p>
+                    </div>
+                </div>
+                <div className="flex bg-gradient-to-r from-blue-400 to-blue-300 gap-5 items-center px-12 py-4 rounded-md">
+                    <div>
+                        <VscFileSubmodule className=" text-4xl" />
+                    </div>
+                    <div>
+                        <p className=" text-3xl">{''}</p>
+                        <p className=" text-lg">Per Day Assignment Submitted</p>
                     </div>
                 </div>
             </div>

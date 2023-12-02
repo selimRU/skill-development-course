@@ -39,6 +39,15 @@ const SignUp = () => {
                             navigate('/')
                         }
                     })
+                    .catch(error => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `${error.message}`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    })
             })
     }
     const {

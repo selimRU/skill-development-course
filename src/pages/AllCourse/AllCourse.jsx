@@ -48,6 +48,7 @@ const AllCourse = () => {
 
     return (
         <div className="max-w-6xl mx-auto my-10 space-y-10">
+            <h3 className=" text-2xl text-center font-semibold mb-5 border-b-2 border-blue-300 py-3 text-blue-400">My added Courses</h3>
             <Helmet>
                 <title>Skill Minds - All Courses</title>
             </Helmet>

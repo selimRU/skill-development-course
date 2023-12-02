@@ -20,7 +20,8 @@ const MyEnrolledClass = () => {
         return <progress></progress>
 
     return (
-        <div>
+        <div className=" px-5 md:px-5 lg:px-0">
+            <h3 className=" text-2xl text-center font-semibold mb-5 border-b-2 border-blue-400 py-3 text-blue-400">My Enroled Courses</h3>
             {
                 enroledCourse.length < 0 ? <h3 className=" text-base md:text-3xl text-center font-semibold lg:my-10">You haven,t enroled for any course.Thanks</h3>
                     :

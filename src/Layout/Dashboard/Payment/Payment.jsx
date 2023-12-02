@@ -9,7 +9,7 @@ const Payment = () => {
     const courseEnroled = useLoaderData()
     console.log(courseEnroled)
     return (
-        <div >
+        <div className=" bg-blue-50 h-screen p-5 rounded-md">
             < Elements stripe={stripePromise}>
                 {
                     courseEnroled?.map(courseItem => <Checkout
