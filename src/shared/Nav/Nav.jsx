@@ -29,7 +29,10 @@ const Nav = () => {
                 <span className="self-center whitespace-nowrap font-semibold dark:text-white rancho text-3xl">Skill Minds</span>
             </Navbar.Brand>
             <div className="flex md:order-2 items-center gap-3">
-                <Link to='/signin'><button className=' bg-blue-50 px-3 py-2 rounded-md hover:bg-blue-400 hover:text-white font-bold roboto'>SignIn</button></Link>
+                {
+                    !user &&
+                    <Link to='/signin'><button className=' bg-blue-50 px-3 py-2 rounded-md hover:bg-blue-400 hover:text-white font-bold roboto'>SignIn</button></Link>
+                }
                 <Dropdown
                     arrowIcon={false}
                     inline

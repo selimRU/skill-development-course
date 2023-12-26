@@ -25,7 +25,7 @@ const AllCourse = () => {
             const filtered = data.data?.filter(course => course.status === "accepted")
             console.log(filtered);
             return filtered;
-            return res;
+
         }
     })
 
